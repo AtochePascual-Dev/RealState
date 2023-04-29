@@ -34,3 +34,31 @@
     background-color: darken($bgColor, 10%);
   }
 }
+
+@mixin heading() {
+  font-weight: 400;
+  font-size: 3rem;
+
+  @include tablet {
+    font-size: 4rem;
+  }
+
+  span {
+    font-weight: 700;
+  }
+
+  &::after {
+    content: "";
+    width: 15rem;
+    height: 1rem;
+    margin-top: 1rem;
+    display: block;
+    background-image: linear-gradient(
+      to right,
+      v.$primario 0%,
+      v.$primario 50%,
+      darken(v.$primario, 10%) 50%,
+      darken(v.$primario, 10%) 100%
+    );
+  }
+}

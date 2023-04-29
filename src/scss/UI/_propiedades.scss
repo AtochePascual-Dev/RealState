@@ -1,0 +1,74 @@
+@use "../base/variables" as v;
+@use "../base/mixins" as m;
+
+.propiedades {
+  padding: 5rem 0;
+
+  @include m.tablet {
+    padding-top: 10rem;
+  }
+
+  &__titulo {
+    @include m.heading;
+    margin-bottom: 5rem;
+  }
+
+  &__grid {
+    display: grid;
+    gap: 2rem;
+
+    @include m.tablet {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    @include m.desktop {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+}
+
+.propiedad {
+  background-color: v.$blanco;
+
+  &__img {
+    position: relative;
+    padding: 2rem;
+    aspect-ratio: 10 / 6;
+    background-size: cover;
+  }
+
+  @for $i from 1 through 6 {
+    $imagen: "../img/propiedad_" + $i + ".jpg";
+
+    &:nth-child(#{$i}) &__img {
+      background-image: linear-gradient(
+          to bottom,
+          transparentize(v.$negro, 1%) 0%,
+          transparentize(v.$negro, 1%) 50%,
+          transparentize(v.$negro, 0.2%) 100%
+        ),
+        url($imagen);
+    }
+  }
+
+  &__titulo {
+    z-index: 10;
+    position: absolute;
+    bottom: 2rem;
+    font-size: 2.4rem;
+    color: v.$blanco;
+  }
+
+  &__descripcion {
+    padding: 2rem;
+  }
+
+  &__precio {
+    font-size: 2.8rem;
+  }
+
+  &__enlace {
+    @include m.boton(v.$primario, v.$blanco);
+    display: block;
+  }
+}
