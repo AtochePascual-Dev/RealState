@@ -1,0 +1,81 @@
+@use "../base/variables" as v;
+@use "../base/mixins" as m;
+
+.destacadas {
+  padding: 5rem;
+  background-image: linear-gradient(
+      to bottom,
+      transparent 0%,
+      transparent 50%,
+      v.$primario 50%,
+      v.$primario 100%
+    ),
+    url("../img/destacada.jpg");
+  background-repeat: no-repeat;
+  background-size: cover, 100rem;
+  background-position: center center, center -3rem;
+
+  @include m.tablet {
+    background-image: linear-gradient(
+        to right,
+        transparent 0%,
+        transparent 50%,
+        v.$primario 50%,
+        v.$primario 100%
+      ),
+      url("../img/destacada.jpg");
+    background-size: cover, 83rem;
+    background-position: center center, -25rem center;
+  }
+
+  @include m.desktop {
+    background-image: linear-gradient(
+        to right,
+        transparent 0%,
+        transparent 50%,
+        v.$primario 50%,
+        v.$primario 100%
+      ),
+      url("../img/destacada.jpg");
+    background-size: cover, 120rem;
+    background-position: center center, -25rem center;
+  }
+
+  &__grid {
+    display: grid;
+    grid-template-rows: repeat(2, 1fr);
+    gap: 15rem;
+
+    @include m.tablet {
+      grid-template-rows: unset;
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  &__content {
+    grid-row: 2 / 3;
+    max-width: 40rem;
+
+    @include m.tablet {
+      grid-row: unset;
+      grid-column: 2 / 3;
+    }
+  }
+
+  &__titulo,
+  &__texto,
+  &__precio {
+    color: v.$blanco;
+  }
+
+  &__precio {
+    font-size: 2.4rem;
+    font-weight: 700;
+  }
+
+  &__enlace {
+    @include m.boton(v.$blanco, v.$primario);
+    display: block;
+    font-size: 1.8rem;
+  }
+}

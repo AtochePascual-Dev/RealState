@@ -1,0 +1,68 @@
+@use "variables" as v;
+
+/** Media Queries **/
+@mixin tablet {
+  @media (min-width: 768px) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @media (min-width: 1024px) {
+    @content;
+  }
+}
+
+@mixin boton($bgColor, $colorTexto) {
+  background-color: $bgColor;
+  padding: 1.5rem 4rem;
+  color: $colorTexto;
+  margin-top: 2rem;
+  font-size: 2rem;
+  font-weight: 400;
+  display: inline-block;
+  font-weight: 700;
+  border: none;
+  transition-property: background-color;
+  transition-duration: 0.3s;
+  text-align: center;
+
+  @include tablet {
+    width: auto;
+  }
+  &:hover {
+    background-color: darken($bgColor, 10%);
+  }
+}
+
+@mixin heading($salto: false) {
+  font-weight: 400;
+  font-size: 3rem;
+
+  @include tablet {
+    font-size: 4rem;
+  }
+
+  span {
+    font-weight: 700;
+
+    @if ($salto) {
+      display: block;
+    }
+  }
+
+  &::after {
+    content: "";
+    width: 15rem;
+    height: 1rem;
+    margin-top: 1rem;
+    display: block;
+    background-image: linear-gradient(
+      to right,
+      v.$primario 0%,
+      v.$primario 50%,
+      darken(v.$primario, 10%) 50%,
+      darken(v.$primario, 10%) 100%
+    );
+  }
+}
