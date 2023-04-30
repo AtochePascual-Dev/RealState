@@ -35,7 +35,7 @@
   }
 }
 
-@mixin heading() {
+@mixin heading($salto: false) {
   font-weight: 400;
   font-size: 3rem;
 
@@ -45,6 +45,10 @@
 
   span {
     font-weight: 700;
+
+    @if ($salto) {
+      display: block;
+    }
   }
 
   &::after {

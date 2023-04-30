@@ -1,0 +1,109 @@
+@use "../base/variables" as v;
+@use "../base/mixins" as m;
+
+.testimoniales-blog {
+  padding-top: 5rem;
+  display: grid;
+  gap: 5rem;
+  grid-auto-flow: dense;
+
+  @include m.tablet {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 4rem;
+  }
+}
+
+.testimonial {
+  &__titulo {
+    @include m.heading(true);
+    margin-bottom: 2rem;
+  }
+
+  &__img {
+    width: 20rem;
+    height: auto;
+    margin: 0 auto;
+  }
+
+  &__descripcion {
+    margin-top: -10rem;
+    padding: 15rem 2rem 2rem 2rem;
+    text-align: center;
+    background-color: v.$blanco;
+  }
+
+  &__nombre {
+    font-size: 2.4rem;
+    font-weight: 700;
+    margin-bottom: 2rem;
+  }
+
+  &__texto {
+    &::before {
+      content: "";
+      width: 2rem;
+      height: 2rem;
+      margin-right: 1rem;
+      display: inline-block;
+      background-image: url("../img/quote.svg");
+      background-size: contain;
+      background-repeat: no-repeat;
+    }
+  }
+}
+
+.blog {
+  @include m.tablet {
+    grid-column: 2 / 4;
+  }
+
+  &__titulo {
+    @include m.heading(true);
+    margin-bottom: 2rem;
+  }
+}
+
+.entrada {
+  margin-bottom: 2rem;
+  display: grid;
+  gap: 2rem;
+  background-color: v.$blanco;
+
+  @include m.tablet {
+    grid-template-columns: repeat(5, 1fr);
+  }
+
+  &__content {
+    padding: 2rem;
+
+    @include m.tablet {
+      grid-column: 3 / 6;
+      padding: 2rem 0;
+    }
+  }
+
+  &__figure {
+    @include m.tablet {
+      grid-column: 1 / 3;
+    }
+  }
+
+  &__img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  &__meta {
+    font-size: 1.4rem;
+  }
+
+  &__enlace {
+    @include m.boton(v.$primario, v.$blanco);
+    display: block;
+
+    @include m.tablet {
+      display: inline-block;
+    }
+  }
+}
