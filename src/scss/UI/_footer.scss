@@ -1,0 +1,43 @@
+@use "../base/variables" as v;
+@use "../base/mixins" as m;
+
+.footer {
+  padding: 5rem 0 0;
+  background-color: v.$primario;
+
+  &__grid {
+    display: grid;
+    gap: 3rem;
+
+    @include m.tablet {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  &__box {
+    color: v.$blanco;
+  }
+
+  &__titulo {
+    margin-bottom: 2rem;
+    text-transform: uppercase;
+    font-size: 2rem;
+  }
+
+  &__texto {
+    color: v.$blanco;
+  }
+
+  &__copy {
+    text-align: center;
+    color: v.$blanco;
+  }
+}
+
+.navegacion-left {
+  align-items: flex-start;
+
+  @include m.tablet {
+    flex-direction: column;
+  }
+}
